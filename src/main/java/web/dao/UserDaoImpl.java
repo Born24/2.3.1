@@ -14,22 +14,17 @@ public class UserDaoImpl implements UserDao {
     @PersistenceContext
     private EntityManager entityManager;
 
+    public UserDaoImpl() {}
 
-    public UserDaoImpl() {
-    }
-
-    //получить всех пользователей
     @Override
     public List<User> findAll() {
         return entityManager.createQuery("SELECT u FROM User u", User.class).getResultList();
     }
 
-    // найти пользователя по ID.
     @Override
     public User findById(Long id) {
         return entityManager.find(User.class, id);
     }
-    //Cохранить нового пользователя или обновить существующего.
 
     @Override
     @Transactional
@@ -40,7 +35,6 @@ public class UserDaoImpl implements UserDao {
             entityManager.merge(user);
         }
     }
-    //Обновляет данные существующего пользователя.
 
     @Override
     @Transactional
@@ -48,7 +42,6 @@ public class UserDaoImpl implements UserDao {
         entityManager.merge(user);
     }
 
-    // удалить пользователя по ID
     @Override
     @Transactional
     public void delete(Long id) {

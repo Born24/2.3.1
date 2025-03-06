@@ -24,7 +24,6 @@ import java.util.Properties;
 @ComponentScan(value = "web")
 public class AppConfig {
 
-
     private final Environment env;
 
     @Autowired
@@ -73,5 +72,4 @@ public class AppConfig {
     public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
         return new PersistenceExceptionTranslationPostProcessor();
     }
-
 }
